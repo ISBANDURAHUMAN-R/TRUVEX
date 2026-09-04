@@ -1,1 +1,0 @@
-# TruthLens AI Backend
