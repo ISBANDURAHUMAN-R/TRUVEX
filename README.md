@@ -1,13 +1,13 @@
 <div align="center">
 
-# 🛡️ TruVex AI
+#  TruVex AI
 
 ### AI Against Misinformation & Digital Trust
 
 [![Python Version](https://img.shields.io/badge/Python-3.11%20%7C%203.12%20%7C%203.13%20%7C%203.14-blue?logo=python&logoColor=white)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![Status](https://img.shields.io/badge/Status-Live%20%26%20Active-brightgreen)](http://127.0.0.1:8000)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 [![GitHub Repo](https://img.shields.io/badge/GitHub-ISBANDURAHUMAN--R%2FTRUVEX-181717?logo=github)](https://github.com/ISBANDURAHUMAN-R/TRUVEX)
 
 > **"Don't just read it. Verify it."**
