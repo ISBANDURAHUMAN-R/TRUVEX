@@ -6,7 +6,7 @@
 
 [![Python Version](https://img.shields.io/badge/Python-3.11%20%7C%203.12%20%7C%203.13%20%7C%203.14-blue?logo=python&logoColor=white)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
-[![Status](https://img.shields.io/badge/Status-Live%20%26%20Active-brightgreen)](http://127.0.0.1:8000)
+
 
 [![GitHub Repo](https://img.shields.io/badge/GitHub-ISBANDURAHUMAN--R%2FTRUVEX-181717?logo=github)](https://github.com/ISBANDURAHUMAN-R/TRUVEX)
 
@@ -20,47 +20,47 @@ A full-stack, enterprise-grade fact-checking and digital trust intelligence plat
 
 ---
 
-## ⚡ Key Features
+##  Key Features
 
-- **🌐 Multi-Platform Input & Source Detection**
+- ** Multi-Platform Input & Source Detection**
   - Automatically identifies and extracts content from **Instagram, WhatsApp, X/Twitter, Facebook, YouTube, Telegram, Reddit, TikTok**, and independent news outlets.
   - Gracefully handles login-walled or private content by offering instantaneous pasted-text and screenshot fallbacks.
 
-- **🧩 Autonomous Claim Decomposition**
+- ** Autonomous Claim Decomposition**
   - Breaks down complex, sensationalized articles or message forwards into distinct, testable factual assertions.
   - Filters out subjective opinions, rhetorical questions, and emotional hyperbole.
 
-- **🔍 Multi-Query Real-Time Evidence Gathering**
+- ** Multi-Query Real-Time Evidence Gathering**
   - Executes live searches across authoritative sources (wire agencies like Reuters, AP, AFP; scientific journals like Nature, Science; government databases `.gov`, `.edu`; and verified fact-checkers like Snopes, PolitiFact).
   - **Strict Anti-Hallucination Policy:** Every single citation is retrieved live from the web—never invented.
 
-- **⚖️ Evidence Comparison & Verdict Stance**
+- ** Evidence Comparison & Verdict Stance**
   - Generates clear supporting and contradicting evidence cards for each claim with direct source links.
   - Verdict spectrum: `🟢 TRUE`, `🟡 MOSTLY TRUE`, `🟠 MISLEADING`, `🔴 MOSTLY FALSE`, `🔴 FALSE`, or `⚪ UNVERIFIED`.
 
-- **📊 Composite Digital Trust Score (0–100)**
+- ** Composite Digital Trust Score (0–100)**
   - Dynamic Trust Meter with sub-metric breakdown:
     - **Claim Accuracy (%)**
     - **Source Credibility (%)**
     - **Evidence Strength (%)**
     - **Manipulation Risk (%)**
 
-- **⏳ Timeline Recirculation Detection**
+- ** Timeline Recirculation Detection**
   - Cross-references event timestamps to flag archival media or years-old crises masquerading as today's breaking news (`⚠️ POSSIBLE OLD NEWS RECIRCULATION`).
 
-- **🕸️ Interactive Source Relationship Graph**
+- ** Interactive Source Relationship Graph**
   - Visual node-edge flow tracing the path from user submission to platform, claims, authoritative sources, and final verdict.
 
-- **🖼️ Image & Metadata Forensics**
+- ** Image & Metadata Forensics**
   - Inspects EXIF metadata, camera hardware profiles, compression artifacts, and software manipulation signatures (Photoshop, Midjourney, Canva).
 
-- **📂 Persistent History & Exporting**
+- ** Persistent History & Exporting**
   - Embedded local SQLite database (`data/truvex.db`) stores investigation history.
   - Export reports as formatted **JSON**, copy **Markdown**, or **Print/PDF**.
 
 ---
 
-## 🏗️ Architecture & Pipeline
+##  Architecture & Pipeline
 
 ```text
 [ USER INPUT ] (URL / Text / Screenshot)
@@ -89,7 +89,7 @@ A full-stack, enterprise-grade fact-checking and digital trust intelligence plat
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```text
 TRUVEX/
@@ -130,7 +130,7 @@ TRUVEX/
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 - Python 3.11, 3.12, 3.13, or 3.14
@@ -172,11 +172,11 @@ python run.py
 ```
 
 Open your browser and navigate to:
-👉 **[http://127.0.0.1:8000](http://127.0.0.1:8000)**
+ **[http://127.0.0.1:8000](http://127.0.0.1:8000)**
 
 ---
 
-## ⚙️ Configuration & Environment
+## Configuration & Environment
 
 TruVex AI works **100% autonomously out of the box** using built-in NLP heuristics, local credibility databases, and real-time live search.
 
@@ -195,7 +195,7 @@ To optionally enable Google Gemini enhanced synthesis:
 ## 📡 API Reference
 
 When the server is running, interactive Swagger documentation is available at:
-👉 **[http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)**
+**[http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)**
 
 | Method | Endpoint | Description |
 | :--- | :--- | :--- |
@@ -210,7 +210,7 @@ When the server is running, interactive Swagger documentation is available at:
 
 ---
 
-## 🧪 Running Tests
+##  Running Tests
 
 Verify the full fact-checking and scoring pipeline using `pytest`:
 
@@ -218,11 +218,8 @@ Verify the full fact-checking and scoring pipeline using `pytest`:
 .\.venv\Scripts\python.exe -m pytest tests
 ```
 
----
 
-## 🛡️ License
 
-This project is licensed under the **MIT License**. See [LICENSE](LICENSE) for details.
 
 ---
 
