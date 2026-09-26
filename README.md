@@ -1,4 +1,4 @@
-﻿# TruVex AI “ AI Against Misinformation & Digital Trust
+﻿# TruVex AI “ AI Against Misinformation & Digital Trust "
 
 > **"Don't just read it. Verify it."**
 
