@@ -1,203 +1,660 @@
-================================================================================
+TruVex AI
+AI Against Misinformation & Digital Trust
 
-TRUVEX AI - AI Against Misinformation & Digital Trust
 "Don't just read it. Verify it."
 
-OVERVIEW
+TruVex AI is a full-stack misinformation detection and digital trust platform designed to help users investigate suspicious online content.
 
-TruVex AI is a full-stack, enterprise-grade misinformation detection and digital
-trust platform. It empowers users to analyze URLs from social media (Instagram,
-WhatsApp, X/Twitter, Facebook, YouTube, Telegram, Reddit, TikTok) and news
-websites, or submit pasted text and post screenshots.
+It analyzes social media URLs, news articles, pasted text, and screenshots, extracts factual claims, searches for independent evidence, evaluates source credibility, detects old-news recirculation, and produces an explainable trust report.
 
-The system performs deep platform detection, decomposes complex content into
-testable atomic claims, verifies each claim against independent live web evidence
-without hallucination, scores source credibility across a curated 600+ domain
-database, detects timeline recirculation of old news, maps an interactive source
-relationship graph, and generates an explainable trust dashboard.
+What TruVex AI Does
 
-KEY FEATURES
+TruVex AI transforms questionable online content into a structured investigation:
 
-Multi-Platform Input & Source Detection:
+URL / Text / Screenshot
+        ↓
+Platform Detection
+        ↓
+Content Extraction
+        ↓
+Claim Decomposition
+        ↓
+Live Web Evidence Search
+        ↓
+Evidence Comparison
+        ↓
+Source Credibility Analysis
+        ↓
+Timeline Analysis
+        ↓
+Trust & Accuracy Scoring
+        ↓
+Explainable Verification Report
 
-Analyzes URLs from Instagram, WhatsApp, Facebook, X/Twitter, YouTube,
-Telegram, Reddit, TikTok, blogs, and news sites.
+The system is designed to avoid forced conclusions. When available evidence is insufficient, the claim can remain UNVERIFIED.
 
-Gracefully flags restricted/inaccessible content (login walls, private
-accounts) with guidance to paste text or upload screenshots.
+Key Features
+Multi-Platform Analysis
 
-Text and Screenshot upload fallbacks for private chat forwards.
+TruVex AI supports content originating from:
 
-Claim Extraction Engine:
+Instagram
+WhatsApp
+X / Twitter
+Facebook
+YouTube
+Telegram
+Reddit
+TikTok
+News websites
+Blogs
+Other web sources
 
-Isolates factual assertions from headlines and body text while excluding
-rhetorical questions and subjective opinions.
+Restricted or inaccessible pages such as private accounts and login-protected posts are gracefully detected.
 
-Supports both an autonomous local NLP extractor and Gemini 2.5 Flash
-synthesis.
+Users can instead provide:
 
-Live Search & Fact-Checking Engine:
+Pasted text
+Screenshots
+Public URLs
+Intelligent Claim Extraction
 
-Searches independent web sources in real time using multi-query targeted
-variations (exact claim, named entities, fact-checking prefixes).
+Complex articles and posts are broken into individual factual claims.
 
-Prioritizes government (.gov), academic (.edu), wire agencies (Reuters,
-AP, AFP), scientific journals (Nature, Science), and certified fact-checkers
-(Snopes, PolitiFact, FactCheck.org).
+The extraction engine:
 
-Evidence links and snippets come from search results; verdicts remain
-unverified when evidence is insufficient.
+Identifies factual assertions
+Separates multiple claims
+Ignores rhetorical questions
+Filters subjective opinions
+Creates testable verification units
+Supports local rule-based extraction
+Can use Gemini for advanced synthesis
 
-Evidence Comparison & Claim-by-Claim Stance:
+Example:
 
-Displays supporting and contradicting evidence with direct URLs and source
-credibility badges.
+Original:
+"Scientists discovered a new planet yesterday,
+and experts say it may support human life."
 
-Supported verdicts: TRUE, MOSTLY TRUE, MISLEADING, UNVERIFIED,
-MOSTLY FALSE, FALSE.
+↓
 
-Never forces a binary TRUE/FALSE decision when evidence is inconclusive.
+Claim 1:
+Scientists discovered a new planet.
 
-Composite Trust & Accuracy Scoring:
+Claim 2:
+Experts say the planet may support human life.
 
-Overall Trust Score (0-100) with animated SVG circular gauge.
+Each claim can then be independently investigated.
 
-Sub-score breakdown:
+Live Evidence Verification
 
-Claim Accuracy (%)
+TruVex AI performs real-time web searches using multiple targeted queries.
 
-Source Credibility (%)
+Search strategies can include:
 
-Evidence Strength (%)
+Exact claim
+        ↓
+Named entities
+        ↓
+Event-specific variations
+        ↓
+Fact-checking queries
+        ↓
+Independent sources
 
-Manipulation Risk (%)
+The system prioritizes sources such as:
 
-Mandatory disclaimer: "AI-generated confidence estimate based on
-available evidence."
+Government websites
+Academic institutions
+Scientific publications
+Reuters
+Associated Press
+AFP
+Nature
+Science
+Established fact-checking organizations
 
-Timeline Recirculation Detection:
+Evidence is displayed with:
 
-Compares event timestamps to detect cases where years-old archival media
-is shared as breaking news.
+Source title
+Source URL
+Relevant snippet
+Credibility information
+Supporting or contradicting stance
+Claim Verdicts
 
-Displays: 
+Each claim receives one of six possible verdicts:
 
-$$!$$
+Verdict	Meaning
+TRUE	Available reliable evidence strongly supports the claim.
+MOSTLY TRUE	The claim is substantially supported, but contains minor inaccuracies, missing context, or qualifications.
+MISLEADING	The claim may contain factual elements that are correct, but the overall presentation, framing, or missing context could create a false or inaccurate impression.
+UNVERIFIED	Available evidence is insufficient, inconclusive, conflicting, or unavailable to reliably determine the claim's accuracy.
+MOSTLY FALSE	The claim contains some accurate elements, but the main assertion is contradicted by the available evidence.
+FALSE	Available reliable evidence strongly contradicts the claim or demonstrates that the claim is factually incorrect.
+Verdict Principles
 
- POSSIBLE OLD NEWS RECIRCULATION when detected.
+TruVex AI does not force a binary TRUE or FALSE decision.
 
-Interactive Source Relationship Graph:
+The verification engine considers:
 
-Visual flow representation:
-USER URL -> SOURCE PLATFORM -> ARTICLE/POST -> CLAIMS ->
-FACT-CHECK SOURCES -> EVIDENCE -> FINAL VERDICT
+Supporting evidence
+Contradicting evidence
+Source credibility
+Number of independent sources
+Agreement between sources
+Publication dates
+Original reporting
+Context surrounding the claim
+Potential timeline manipulation
+Evidence quality and relevance
 
-Interactive SVG diagram with color-coded nodes and relationship links.
+When evidence is insufficient or conflicting, the system uses:
 
-Original Source Discovery & Related News:
+UNVERIFIED
 
-Identifies the earliest or primary reporting outlet with evidence rationale.
+rather than generating an unsupported conclusion.
 
-Surfaces independent related articles covering the event.
+Example
+Claim:
+"Event X happened on January 15, 2025."
 
-Image & Media Forensics:
+Supporting Evidence:
+- Government publication confirms the event.
+- Two independent news organizations report the same date.
 
-Analyzes EXIF metadata, camera hardware traces, software editing signatures
-(Photoshop, Canva, Midjourney), and compression patterns.
+Contradicting Evidence:
+- One social media post claims the event occurred on January 20.
 
-Conservative reporting: "Image authenticity could not be reliably
-determined" when inconclusive.
+Result:
+TRUE
 
-Persistent History & Exporting:
+The final verdict is accompanied by the underlying evidence so users can independently review the reasoning rather than relying solely on the generated label.
 
-Stores past analyses in an embedded SQLite database (data/truvex.db).
+Trust & Accuracy Scoring
 
-Slide-out history drawer to reload past investigations.
+TruVex AI generates an overall Trust Score from 0-100.
 
-Export reports as JSON, Copy Markdown, or Print/PDF.
+The dashboard breaks the score into multiple components:
 
-PROJECT LAYOUT
+┌─────────────────────────────┐
+│        TRUST SCORE          │
+│           82 / 100          │
+├─────────────────────────────┤
+│ Claim Accuracy       86%    │
+│ Source Credibility   91%    │
+│ Evidence Strength    78%    │
+│ Manipulation Risk    23%    │
+└─────────────────────────────┘
+Score Components
+Claim Accuracy
+Source Credibility
+Evidence Strength
+Manipulation Risk
 
+The dashboard includes an animated SVG trust gauge for visual interpretation.
+
+Disclaimer: AI-generated confidence estimate based on available evidence.
+
+Old News Recirculation Detection
+
+Not every misleading post contains completely fake information.
+
+Sometimes genuine old information is presented as breaking news.
+
+TruVex AI compares:
+
+Original Event Date
+        ↓
+Original Publication
+        ↓
+Current Post Date
+        ↓
+Current Context
+
+When significant timeline inconsistencies are detected, the system can display:
+
+POSSIBLE OLD NEWS RECIRCULATION
+
+This helps identify recycled articles, videos, and images presented without their original context.
+
+Interactive Source Relationship Graph
+
+TruVex AI generates an interactive SVG relationship graph showing how information moves through the investigation.
+
+USER URL
+   │
+   ▼
+SOURCE PLATFORM
+   │
+   ▼
+ARTICLE / POST
+   │
+   ▼
+CLAIMS
+   │
+   ▼
+FACT-CHECK SOURCES
+   │
+   ▼
+EVIDENCE
+   │
+   ▼
+FINAL VERDICT
+
+The graph provides a visual explanation of the relationship between the original content and the evidence used during verification.
+
+Original Source Discovery
+
+TruVex AI attempts to identify the earliest or primary reporting source for an event.
+
+The system can surface:
+
+Original reporting
+Independent coverage
+Related news articles
+Supporting sources
+Alternative reporting
+
+The report also provides reasoning for why a source may represent the original reporting.
+
+Source Credibility Analysis
+
+TruVex AI evaluates the credibility of sources using a curated database containing more than 600 domains.
+
+The credibility engine considers factors such as:
+
+Domain identity
+Source category
+Publication type
+Known fact-checking organizations
+Government and institutional sources
+Satire indicators
+Source consistency
+
+The system does not treat every website as equally reliable.
+
+Credibility information is presented alongside evidence so users can inspect the sources behind a verification result.
+
+Image & Media Forensics
+
+TruVex AI includes conservative image-analysis capabilities.
+
+Potential signals include:
+
+EXIF metadata
+Camera information
+Software editing traces
+Compression patterns
+Photoshop signatures
+Canva signatures
+AI-generation indicators such as Midjourney metadata
+
+The system avoids making unsupported authenticity claims.
+
+When evidence is insufficient, it reports:
+
+Image authenticity could not be reliably determined.
+Persistent Investigation History
+
+Previous investigations are stored locally using SQLite.
+
+Database:
+
+data/truvex.db
+
+The dashboard includes a slide-out history drawer allowing users to:
+
+View previous investigations
+Reload reports
+Delete individual records
+Clear history
+Export & Reporting
+
+Investigation results can be exported or shared as:
+
+JSON
+Markdown
+Print / PDF
+
+This makes TruVex AI suitable for research, demonstrations, documentation, and digital-literacy workflows.
+
+Project Architecture
 truvex-ai/
-|-- .venv/                          # Local Python virtual environment
-|-- backend/
-|   |-- init.py
-|   |-- config.py                   # Environment config & constants
-|   |-- models.py                   # Pydantic data schemas
-|   |-- database.py                 # SQLite persistence layer
-|   |-- sample_data.py              # 1-click demo test presets
-|   |-- services/
-|   |   |-- platform_detector.py    # Regex & domain platform detection
-|   |   |-- content_extractor.py    # OpenGraph, Schema.org, oEmbed scraper
-|   |   |-- credibility_service.py  # 600+ domain database & satire detector
-|   |   |-- claim_extractor.py      # Claim decomposition engine
-|   |   |-- search_service.py       # Real-time multi-query search
-|   |   |-- verification_service.py # Stance comparison, scores & verdicts
-|   |   |-- timeline_service.py     # Old news recirculation checker
-|   |   |-- image_forensics.py      # EXIF & compression analysis
-|   |   -- graph_service.py        # Node-edge relationship generator |   -- main.py                     # FastAPI application & REST routes
-|-- frontend/
-|   |-- index.html                  # Cyber-trust themed SPA dashboard
-|   |-- styles.css                  # Dashboard styling
-|   |-- app.js                      # Dashboard controller & API client
-|   |-- graph.js                    # Interactive SVG relationship graph
-|   -- history.js                  # History drawer & export utilities |-- run.py                          # Startup launcher script |-- README.txt                      # Project documentation -- requirements.txt                # Python dependencies
+│
+├── .venv/
+│
+├── backend/
+│   ├── __init__.py
+│   ├── config.py
+│   ├── models.py
+│   ├── database.py
+│   ├── sample_data.py
+│   │
+│   ├── services/
+│   │   ├── platform_detector.py
+│   │   ├── content_extractor.py
+│   │   ├── credibility_service.py
+│   │   ├── claim_extractor.py
+│   │   ├── search_service.py
+│   │   ├── verification_service.py
+│   │   ├── timeline_service.py
+│   │   ├── image_forensics.py
+│   │   └── graph_service.py
+│   │
+│   └── main.py
+│
+├── frontend/
+│   ├── index.html
+│   ├── styles.css
+│   ├── app.js
+│   ├── graph.js
+│   └── history.js
+│
+├── data/
+│   └── truvex.db
+│
+├── run.py
+├── requirements.txt
+└── README.md
+Technology Stack
+Backend
+Python
+FastAPI
+Pydantic
+SQLite
+REST API
+AI & Verification
+Rule-based NLP
+Gemini API
+Multi-query web search
+Claim verification
+Source credibility analysis
+Timeline analysis
+Image metadata analysis
+Frontend
+HTML5
+CSS3
+JavaScript
+SVG
+Interactive data visualization
+Requirements
 
-INSTALLATION & RUNNING
-
-Prerequisites:
+Before running TruVex AI, install:
 
 Python 3.11+
+Internet connection
+Modern web browser
 
-Windows, macOS, or Linux
+Gemini API access is optional.
 
-Active internet connection (for live evidence searches)
+Installation
+Windows
 
-Windows (PowerShell):
+Open PowerShell inside the project directory:
+
 python -m venv .venv
-..venv\Scripts\python.exe -m pip install --upgrade pip
-..venv\Scripts\python.exe -m pip install -r requirements.txt
-..venv\Scripts\python.exe run.py
 
-macOS / Linux:
+.\.venv\Scripts\python.exe -m pip install --upgrade pip
+
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+
+.\.venv\Scripts\python.exe run.py
+
+Then open:
+
+http://127.0.0.1:8000
+Linux / macOS
 python3 -m venv .venv
+
 source .venv/bin/activate
+
 python -m pip install --upgrade pip
+
 python -m pip install -r requirements.txt
+
 python run.py
 
-Configuration & Environment Variables:
+Open:
 
-GEMINI_API_KEY (Optional): Set in environment or root .env file.
-Without this key, the system defaults to built-in rule-based claim
-extraction and verification.
+http://127.0.0.1:8000
+Environment Configuration
 
-HOST (Optional): Defaults to 127.0.0.1.
+Create a .env file in the project root if required:
 
-PORT (Optional): Defaults to 8000.
+GEMINI_API_KEY=your_api_key_here
+HOST=127.0.0.1
+PORT=8000
+RELOAD=1
+Configuration
+Variable	Required	Default	Description
+GEMINI_API_KEY	No	—	Enables Gemini-powered synthesis
+HOST	No	127.0.0.1	Server host
+PORT	No	8000	Server port
+RELOAD	No	Disabled	Enables development auto-reload
 
-RELOAD (Optional): Set to 1 to enable auto-reloading during development.
+Without a Gemini API key, TruVex AI falls back to its built-in processing logic.
 
-Dashboard Access:
-Open http://127.0.0.1:8000 in your browser.
+API Documentation
 
-API DOCUMENTATION
+Once the application is running, interactive API documentation is available at:
 
-Interactive Swagger UI is accessible at:
 http://127.0.0.1:8000/docs
+Main Endpoints
+Analyze Content
+POST /api/analyze
 
-Primary Endpoints:
+Submit:
 
-POST   /api/analyze       Submit URL, text, and/or image for fact-checking
+URL
+Text
+Image
 
-GET    /api/history       Retrieve past verification summaries
+for verification.
 
-GET    /api/history/{id}  Retrieve full report for a specific check
+Get History
+GET /api/history
 
-DELETE /api/history/{id}  Delete an analysis entry
+Returns previous investigation summaries.
 
-DELETE /api/history       Clear all history records
+Get Investigation
+GET /api/history/{id}
 
-GET    /api/demos         Fetch preset demo scenarios
+Returns the complete report for a specific investigation.
 
-GET    /api/status        Check engine status and active services
+Delete Investigation
+DELETE /api/history/{id}
+
+Deletes a specific investigation.
+
+Clear History
+DELETE /api/history
+
+Deletes all stored investigations.
+
+Demo Scenarios
+GET /api/demos
+
+Returns preset scenarios for testing the platform.
+
+Engine Status
+GET /api/status
+
+Checks the status of the verification engine and active services.
+
+Demo Workflow
+
+A typical investigation looks like:
+
+1. User submits a suspicious URL
+             ↓
+2. TruVex detects the platform
+             ↓
+3. Content is extracted
+             ↓
+4. Claims are identified
+             ↓
+5. Each claim is searched independently
+             ↓
+6. Evidence is collected
+             ↓
+7. Sources are evaluated
+             ↓
+8. Supporting and contradicting evidence
+   is compared
+             ↓
+9. Timeline is checked
+             ↓
+10. Trust score is generated
+             ↓
+11. Source relationship graph is created
+             ↓
+12. Explainable report is displayed
+Verification Philosophy
+
+TruVex AI follows several principles.
+
+Evidence First
+
+Claims should be evaluated against available evidence rather than assumptions.
+
+Independent Verification
+
+A single source should not automatically determine the final result.
+
+Uncertainty Preservation
+
+Insufficient evidence should result in:
+
+UNVERIFIED
+
+rather than an invented conclusion.
+
+Source Awareness
+
+Different sources have different levels of reliability and editorial standards.
+
+Explainability
+
+Users should be able to understand:
+
+What was claimed?
+        ↓
+What evidence was found?
+        ↓
+Which sources support it?
+        ↓
+Which sources contradict it?
+        ↓
+How was the verdict produced?
+Limitations
+
+TruVex AI is an investigative assistance system, not an absolute truth oracle.
+
+Results can be affected by:
+
+Search engine coverage
+Newly emerging events
+Deleted web pages
+Private social media accounts
+Login restrictions
+Limited evidence
+Conflicting sources
+Metadata removal
+Image recompression
+AI-generated content
+Rapidly changing information
+
+A high or low score should therefore be interpreted alongside the underlying evidence.
+
+Privacy
+
+TruVex AI is designed to store investigation history locally using SQLite.
+
+Users should avoid submitting:
+
+Passwords
+Private credentials
+Sensitive personal information
+Confidential documents
+Private content they are not authorized to process
+Project Goals
+
+TruVex AI aims to make digital verification:
+
+Accessible
+Explainable
+Evidence-driven
+Multi-platform
+Fast
+Trust-focused
+Useful for digital literacy
+
+The goal is not simply to answer:
+
+"Is this fake?"
+
+Instead, TruVex AI aims to answer:
+
+"What exactly is being claimed, what evidence exists, where did the information come from, and how strong is that evidence?"
+
+Future Improvements
+
+Potential future development areas include:
+
+Advanced multimodal AI analysis
+Video frame verification
+Audio and deepfake detection
+Browser extension
+Mobile application
+Multilingual claim extraction
+More extensive source credibility datasets
+Real-time social-media monitoring
+Advanced image provenance detection
+Knowledge graph integration
+Community-assisted verification
+Automated citation generation
+Database
+
+Local investigation data is stored in:
+
+data/truvex.db
+
+SQLite keeps the project lightweight while allowing persistent investigation history without requiring an external database server.
+
+Contributing
+
+Contributions are welcome.
+
+Suggested workflow:
+
+git clone <repository-url>
+
+cd truvex-ai
+
+python -m venv .venv
+
+pip install -r requirements.txt
+
+python run.py
+
+Create a feature branch:
+
+git checkout -b feature/new-feature
+
+Commit changes:
+
+git add .
+git commit -m "Add new verification feature"
+
+Push the branch:
+
+git push origin feature/new-feature
+
+Then open a Pull Request.
+
+License
+completely made by me.
+
+
