@@ -7,8 +7,10 @@ from backend.services.credibility_service import evaluate_source_credibility
 try:
     from ddgs import DDGS
 except ImportError:
-    # Keep the API available when dependencies have not been installed yet.
-    DDGS = None
+    try:
+        from duckduckgo_search import DDGS
+    except ImportError:
+        DDGS = None
 
 
 def search_available() -> bool:
@@ -73,13 +75,19 @@ async def search_evidence_for_claim(claim: str, max_sources: int = 6) -> List[Di
     """
     queries = generate_search_queries(claim)
     
-    # Run searches in threadpool to keep FastAPI async loop non-blocking
-    loop = asyncio.get_event_loop()
+    # Run searches concurrently in threadpool to keep FastAPI async loop non-blocking
+    try:
+        loop = asyncio.get_running_loop()
+    except RuntimeError:
+        loop = asyncio.get_event_loop()
+
     all_raw_results = []
+    tasks = [loop.run_in_executor(None, run_ddgs_query, q, 4) for q in queries]
+    query_results = await asyncio.gather(*tasks, return_exceptions=True)
     
-    for q in queries:
-        res = await loop.run_in_executor(None, run_ddgs_query, q, 4)
-        all_raw_results.extend(res)
+    for res in query_results:
+        if isinstance(res, list):
+            all_raw_results.extend(res)
 
     # Deduplicate by domain and normalized URL
     seen_urls = set()

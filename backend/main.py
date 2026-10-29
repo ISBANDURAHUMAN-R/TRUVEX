@@ -41,8 +41,19 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title="TruVex AI – AI Against Misinformation & Digital Trust",
     version="1.0.0",
+    docs_url="/docs",
+    redoc_url="/redoc",
     lifespan=lifespan
 )
+
+# Security Headers Middleware
+@app.middleware("http")
+async def add_security_headers(request: Request, call_next):
+    response = await call_next(request)
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["X-Frame-Options"] = "SAMEORIGIN"
+    response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+    return response
 
 # CORS setup
 app.add_middleware(
@@ -59,8 +70,21 @@ async def favicon():
 
 @app.get("/api/health")
 async def health_check():
-    """Simple health check endpoint."""
-    return {"status": "ok", "service": "TruVex AI"}
+    """Liveness & readiness health probe with database connectivity check."""
+    db_ok = True
+    try:
+        from backend.database import get_db
+        with get_db() as conn:
+            conn.execute("SELECT 1")
+    except Exception:
+        db_ok = False
+
+    return {
+        "status": "healthy" if db_ok else "degraded",
+        "service": "TruVex AI",
+        "database": "connected" if db_ok else "error",
+        "version": "1.0.0"
+    }
 
 @app.get("/api/status")
 async def get_system_status():

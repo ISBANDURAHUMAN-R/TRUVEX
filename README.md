@@ -6,8 +6,8 @@
 
 [![Python Version](https://img.shields.io/badge/Python-3.11%20%7C%203.12%20%7C%203.13%20%7C%203.14-blue?logo=python&logoColor=white)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
-
-
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?logo=docker&logoColor=white)](https://www.docker.com)
 [![GitHub Repo](https://img.shields.io/badge/GitHub-ISBANDURAHUMAN--R%2FTRUVEX-181717?logo=github)](https://github.com/ISBANDURAHUMAN-R/TRUVEX)
 
 > **"Don't just read it. Verify it."**
@@ -93,11 +93,14 @@ A full-stack, enterprise-grade fact-checking and digital trust intelligence plat
 
 ```text
 TRUVEX/
+├── .github/
+│   └── workflows/
+│       └── ci.yml                   # Automated CI workflow (Python 3.11, 3.12, 3.13)
 ├── backend/
 │   ├── __init__.py                  # Backend module definition
 │   ├── config.py                    # Environment settings, constants & paths
 │   ├── database.py                  # SQLite history persistence layer
-│   ├── main.py                      # FastAPI application & REST endpoints
+│   ├── main.py                      # FastAPI application, security headers & REST endpoints
 │   ├── models.py                    # Pydantic schemas & response models
 │   ├── sample_data.py               # 1-click test scenario presets
 │   └── services/
@@ -107,7 +110,7 @@ TRUVEX/
 │       ├── graph_service.py         # Visual node-edge relationship generator
 │       ├── image_forensics.py       # EXIF & image compression analyzer
 │       ├── platform_detector.py     # URL & social network detector
-│       ├── search_service.py        # Real-time multi-query search client
+│       ├── search_service.py        # Concurrent multi-query live search client
 │       ├── timeline_service.py      # Old news recirculation checker
 │       └── verification_service.py  # Fact verification & scoring engine
 ├── frontend/
@@ -118,14 +121,23 @@ TRUVEX/
 │   └── history.js                   # History drawer & report exporters
 ├── tests/
 │   ├── test_misinformation.py       # Detection accuracy unit tests
-│   └── test_truvex.py               # Comprehensive end-to-end verification suite
+│   └── test_truvex.py               # Comprehensive verification & health test suite
 ├── data/
 │   └── .gitkeep                     # Preserves data directory structure
-├── requirements.txt                 # Python dependencies
-├── run.py                           # Python server launcher
-├── run.bat                          # Windows one-click batch launcher
+├── .dockerignore                    # Container build exclusions
+├── .env.example                     # Environment configuration template
 ├── .gitignore                       # Security & cache exclusion rules
-└── README.md                        # Project documentation
+├── CONTRIBUTING.md                  # Open-source contribution guidelines
+├── docker-compose.yml               # Container orchestration file
+├── Dockerfile                       # Multi-stage production container definition
+├── LICENSE                          # MIT License
+├── pyproject.toml                   # Project metadata & build tool configuration
+├── pytest.ini                       # Test suite runner configuration
+├── requirements.txt                 # Python dependencies
+├── run.bat                          # Windows one-click batch launcher
+├── run.py                           # Python server launcher with CLI argument parser
+├── run.sh                           # Unix/Linux/macOS one-click bash launcher
+└── SECURITY.md                      # Security vulnerability reporting policy
 ```
 
 ---
@@ -133,7 +145,7 @@ TRUVEX/
 ##  Quick Start
 
 ### Prerequisites
-- Python 3.11, 3.12, 3.13, or 3.14
+- Python 3.11, 3.12, 3.13, or 3.14 (or Docker)
 - Git
 
 ### 1. Clone the Repository
@@ -166,9 +178,22 @@ pip install -r requirements.txt
 .\run.bat
 ```
 
-**Option B (Python directly):**
+**Option B (macOS / Linux 1-Click Launcher):**
+```bash
+chmod +x run.sh
+./run.sh
+```
+
+**Option C (Docker & Docker Compose):**
+```bash
+docker compose up --build
+```
+
+**Option D (Python directly):**
 ```bash
 python run.py
+# Or customize host & port:
+python run.py --host 127.0.0.1 --port 8000 --reload
 ```
 
 Open your browser and navigate to:

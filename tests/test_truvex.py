@@ -18,6 +18,15 @@ from backend.main import app
 
 client = TestClient(app)
 
+def test_health_endpoint():
+    print("Testing GET /api/health...")
+    response = client.get("/api/health")
+    assert response.status_code == 200, f"Status code: {response.status_code}"
+    data = response.json()
+    assert data["status"] == "healthy"
+    assert data["database"] == "connected"
+    print("  -> Passed: Health check endpoint passed.")
+
 def test_status_endpoint():
     print("Testing GET /api/status...")
     response = client.get("/api/status")
@@ -98,6 +107,7 @@ if __name__ == "__main__":
     print("==================================================")
     print("  RUNNING TRUVEX AI VERIFICATION SUITE")
     print("==================================================")
+    test_health_endpoint()
     test_status_endpoint()
     test_demos_endpoint()
     test_restricted_platform_handling()
