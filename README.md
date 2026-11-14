@@ -8,12 +8,12 @@
 TRUVEX is an AI-powered misinformation detection and claims verification system. It decomposes textual and multimodal assertions into testable factual claims, cross-examines independent authoritative evidence, and computes objective credibility and veracity ratings in real time.
 
 ## ❖ Key Features
-- ▪ Automated claim extraction and decomposition into atomic assertions.
-- ▫ Multi-source evidence cross-examination and fact-checking retrieval engine.
-- ▴ Objective veracity scoring algorithm and misinformation risk classification.
-- ▿ Interactive React and Tailwind CSS intelligence dashboard with claim graph visualizations.
-- ⬡ Modular FastAPI REST API backend with automated OpenAPI / Swagger documentation.
-- · Comprehensive automated test suite powered by pytest.
+- Automated claim extraction and decomposition into atomic assertions.
+- Multi-source evidence cross-examination and fact-checking retrieval engine.
+- Objective veracity scoring algorithm and misinformation risk classification.
+- Interactive React and Tailwind CSS intelligence dashboard with claim graph visualizations.
+- Modular FastAPI REST API backend with automated OpenAPI / Swagger documentation.
+- Comprehensive automated test suite powered by pytest.
 
 ## ⬢ Technologies Used
 - Python 3.11+
