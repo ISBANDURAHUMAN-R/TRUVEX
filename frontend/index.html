@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruVex AI – AI Against Misinformation & Digital Trust</title>
+    <link rel="stylesheet" href="/static/styles.css?v=1.0.1">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="no-print" style="border-bottom:1px solid rgba(239,68,68,0.2);background:rgba(5,0,2,0.92);backdrop-filter:blur(12px);position:sticky;top:0;z-index:100;">
+        <div class="container" style="display:flex;justify-content:space-between;align-items:center;height:70px;">
+            <div style="display:flex;align-items:center;gap:0.75rem;">
+                <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg, #ef4444, #991b1b);display:flex;align-items:center;justify-content:center;box-shadow:0 0 20px rgba(239,68,68,0.5);font-size:1.3rem;border:1px solid rgba(255,255,255,0.15);">
+                    🛡️
+                </div>
+                <div>
+                    <div style="font-size:1.2rem;font-weight:900;letter-spacing:-0.02em;background:linear-gradient(to right, #ffffff, #fca5a5, #ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
+                        TRUVEX AI
+                    </div>
+                    <div style="font-size:0.7rem;color:#f87171;letter-spacing:0.04em;font-weight:600;text-transform:uppercase;">
+                        AI Against Misinformation & Digital Trust
+                    </div>
+                </div>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:0.75rem;">
+                <button onclick="toggleMethodologyModal(true)" style="background:rgba(18,3,6,0.6);border:1px solid rgba(239,68,68,0.25);color:#cbd5e1;padding:0.45rem 0.85rem;border-radius:0.5rem;font-size:0.82rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:0.35rem;transition:all 0.2s;">
+                    <span>📜</span> Methodology
+                </button>
+                <button onclick="toggleSettingsModal(true)" style="background:rgba(18,3,6,0.6);border:1px solid rgba(239,68,68,0.25);color:#cbd5e1;padding:0.45rem 0.85rem;border-radius:0.5rem;font-size:0.82rem;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:0.35rem;transition:all 0.2s;">
+                    <span>⚙️</span> API Settings
+                </button>
+                <button onclick="toggleHistoryDrawer(true)" style="background:rgba(239,68,68,0.16);border:1px solid rgba(239,68,68,0.45);color:#ff4d6d;padding:0.45rem 0.95rem;border-radius:0.5rem;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:0.35rem;box-shadow:0 0 15px rgba(239,68,68,0.2);transition:all 0.2s;">
+                    <span>📂</span> History
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container" style="padding-top:2.5rem;padding-bottom:5rem;">
+        
+        <!-- Hero Tagline & Introduction -->
+        <section style="text-align:center;max-width:780px;margin:0 auto 2.5rem auto;">
+            <div class="badge badge-red" style="margin-bottom:0.85rem;font-size:0.75rem;">
+                <span>⚡</span> Real-Time Multi-Source Verification Node
+            </div>
+            <h1 style="font-size:2.6rem;font-weight:900;letter-spacing:-0.03em;line-height:1.2;margin-bottom:0.85rem;color:#f8fafc;">
+                Don't just read it. <span style="background:linear-gradient(to right, #ff4d6d, #ef4444, #dc2626);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:0 0 35px rgba(239,68,68,0.3);">Verify it.</span>
+            </h1>
+            <p style="color:#94a3b8;font-size:1.05rem;line-height:1.6;">
+                Submit any social media post, breaking headline, viral screenshot, or chat forward.
+                TruVex AI decomposes claims, cross-examines independent authoritative evidence, scores credibility, and detects manipulation.
+            </p>
+        </section>
+
+        <!-- Main Input Card -->
+        <section class="glass-card no-print" style="max-width:880px;margin:0 auto 2rem auto;padding:1.75rem;border-color:rgba(239,68,68,0.3);box-shadow:0 12px 40px rgba(0,0,0,0.7), 0 0 25px rgba(239,68,68,0.12);">
+            
+            <!-- Input Tabs -->
+            <div class="input-tabs">
+                <button class="tab-btn active" data-tab="tab-url">
+                    <span>🔗</span> Paste URL
+                </button>
+                <button class="tab-btn" data-tab="tab-text">
+                    <span>📝</span> Paste Text / Chat Forward
+                </button>
+                <button class="tab-btn" data-tab="tab-image">
+                    <span>🖼️</span> Screenshot / Image
+                </button>
+            </div>
+
+            <!-- Tab 1: URL Input -->
+            <div id="tab-url" class="tab-pane">
+                <div style="margin-bottom:1rem;">
+                    <label style="display:block;font-size:0.82rem;font-weight:700;color:#fca5a5;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.5rem;">
+                        Paste News / Post URL
+                    </label>
+                    <div style="position:relative;">
+                        <input id="input-url" type="url" placeholder="https://www.instagram.com/... | https://x.com/... | https://youtube.com/... | https://news.com/article" style="width:100%;background:#090103;border:1px solid rgba(239,68,68,0.3);border-radius:0.75rem;padding:0.9rem 1rem;font-size:0.95rem;color:#fff;outline:none;transition:border-color 0.2s, box-shadow 0.2s;">
+                    </div>
+                </div>
+                <div style="display:flex;align-items:center;gap:0.6rem;flex-wrap:wrap;font-size:0.75rem;color:#94a3b8;margin-bottom:1.25rem;">
+                    <span style="color:#cbd5e1;font-weight:600;">Supported platforms:</span>
+                    <span class="badge" style="background:#160406;color:#fca5a5;border:1px solid rgba(239,68,68,0.2);">Instagram</span>
+                    <span class="badge" style="background:#160406;color:#fca5a5;border:1px solid rgba(239,68,68,0.2);">WhatsApp</span>
+                    <span class="badge" style="background:#160406;color:#fca5a5;border:1px solid rgba(239,68,68,0.2);">X/Twitter</span>
+                    <span class="badge" style="background:#160406;color:#fca5a5;border:1px solid rgba(239,68,68,0.2);">Facebook</span>
+                    <span class="badge" style="background:#160406;color:#fca5a5;border:1px solid rgba(239,68,68,0.2);">YouTube</span>
+                    <span class="badge" style="background:#160406;color:#fca5a5;border:1px solid rgba(239,68,68,0.2);">Telegram</span>
+                    <span class="badge" style="background:#160406;color:#fca5a5;border:1px solid rgba(239,68,68,0.2);">Reddit</span>
+                    <span class="badge" style="background:#160406;color:#fca5a5;border:1px solid rgba(239,68,68,0.2);">News & Blogs</span>
+                </div>
+            </div>
+
+            <!-- Tab 2: Text Input -->
+            <div id="tab-text" class="tab-pane" style="display:none;">
+                <div style="margin-bottom:1.25rem;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                        <label style="font-size:0.82rem;font-weight:700;color:#fca5a5;text-transform:uppercase;letter-spacing:0.05em;">
+                            Can't provide a URL? Paste the news text here
+                        </label>
+                        <span style="font-size:0.75rem;color:#ff4d6d;font-weight:600;">Essential for WhatsApp & private chats</span>
+                    </div>
+                    <textarea id="input-text" rows="4" placeholder="Paste the claim, message forward, or article text here..." style="width:100%;background:#090103;border:1px solid rgba(239,68,68,0.3);border-radius:0.75rem;padding:0.9rem 1rem;font-size:0.92rem;color:#fff;outline:none;resize:vertical;font-family:inherit;transition:border-color 0.2s, box-shadow 0.2s;"></textarea>
+                </div>
+            </div>
+
+            <!-- Tab 3: Screenshot Upload -->
+            <div id="tab-image" class="tab-pane" style="display:none;">
+                <div style="margin-bottom:1.25rem;">
+                    <label style="display:block;font-size:0.82rem;font-weight:700;color:#fca5a5;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.5rem;">
+                        Upload Post Screenshot or Image
+                    </label>
+                    
+                    <div id="drop-zone" style="border:2px dashed rgba(239,68,68,0.35);border-radius:0.75rem;padding:2rem;text-align:center;background:#090103;cursor:pointer;transition:all 0.2s;">
+                        <div style="font-size:2.2rem;margin-bottom:0.5rem;">📤</div>
+                        <div style="font-weight:700;color:#f8fafc;font-size:0.95rem;">Drag and drop screenshot here, or click to browse</div>
+                        <div style="font-size:0.75rem;color:#94a3b8;margin-top:0.35rem;">Supports PNG, JPG, WebP up to 10MB</div>
+                        <input id="file-input" type="file" accept="image/*" style="display:none;">
+                    </div>
+
+                    <div id="image-preview-container" style="display:none;margin-top:1rem;position:relative;text-align:center;">
+                        <img id="image-preview" src="" alt="Preview" style="max-height:180px;border-radius:0.5rem;border:1px solid rgba(239,68,68,0.4);margin:0 auto;box-shadow:0 0 20px rgba(239,68,68,0.25);">
+                        <div style="margin-top:0.6rem;">
+                            <button id="remove-image-btn" style="background:#dc2626;color:#fff;border:none;padding:0.35rem 0.85rem;border-radius:0.4rem;font-size:0.75rem;font-weight:700;cursor:pointer;box-shadow:0 2px 10px rgba(220,38,38,0.4);">
+                                Remove Image
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Button: High-energy Cyber Red -->
+            <button onclick="analyzeContent()" style="width:100%;background:linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #991b1b 100%);color:#ffffff;border:none;padding:1.05rem;border-radius:0.75rem;font-size:1.05rem;font-weight:800;letter-spacing:0.04em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:0.6rem;box-shadow:0 4px 25px rgba(239,68,68,0.5);transition:all 0.2s;">
+                <span>🔍</span> ANALYZE NEWS
+            </button>
+        </section>
+
+        <!-- Preset 1-Click Demos Row -->
+        <section class="no-print" style="max-width:880px;margin:0 auto 3rem auto;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem;">
+                <span style="font-size:0.75rem;font-weight:700;color:#fca5a5;text-transform:uppercase;letter-spacing:0.06em;">
+                    Or test with preset fact-checking scenarios:
+                </span>
+            </div>
+            <div id="demo-presets-container" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:0.6rem;">
+                <!-- Filled dynamically via JS -->
+            </div>
+        </section>
+
+        <!-- Inaccessible Platform Warning (Conditional) -->
+        <div id="inaccessible-platform-banner" class="glass-card" style="display:none;max-width:880px;margin:0 auto 2rem auto;padding:1.25rem;border-left:4px solid #f59e0b;background:rgba(245,158,11,0.08);">
+            <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+                <div style="font-size:1.5rem;line-height:1;">⚠️</div>
+                <div>
+                    <div style="font-weight:700;color:#fbbf24;font-size:0.95rem;margin-bottom:0.25rem;">Direct Access Restricted</div>
+                    <div id="inaccessible-platform-text" style="font-size:0.85rem;color:#e2e8f0;line-height:1.5;">
+                        Content could not be directly retrieved from this platform. Please paste the text or upload a screenshot.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timeline Recirculation Alert (Conditional) -->
+        <div id="timeline-recirculation-alert" class="glass-card" style="display:none;max-width:880px;margin:0 auto 2rem auto;padding:1.25rem;border-left:4px solid #ef4444;background:rgba(239,68,68,0.12);box-shadow:0 0 25px rgba(239,68,68,0.2);">
+            <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+                <div style="font-size:1.5rem;line-height:1;">⏳</div>
+                <div>
+                    <div style="font-weight:700;color:#f87171;font-size:0.95rem;margin-bottom:0.25rem;">Timeline Warning: Possible Old News Recirculation</div>
+                    <div id="timeline-alert-text" style="font-size:0.85rem;color:#e2e8f0;line-height:1.5;">
+                        This content refers to an older event and may be misleading because it is being presented as recent.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading / Scanning Modal -->
+        <div id="loading-overlay" class="modal-overlay">
+            <div class="glass-card" style="max-width:440px;width:100%;padding:2rem;text-align:center;border-color:rgba(239,68,68,0.6);box-shadow:0 0 40px rgba(239,68,68,0.4);">
+                <div class="cyber-scan-glow" style="width:68px;height:68px;border-radius:50%;border:3px solid #ef4444;border-top-color:transparent;margin:0 auto 1.25rem auto;animation:spin 1s linear infinite;"></div>
+                <h3 style="font-size:1.25rem;font-weight:900;color:#fff;margin-bottom:0.5rem;letter-spacing:-0.01em;">TruVex Scanner Active</h3>
+                <p id="scan-status-text" style="font-size:0.85rem;color:#cbd5e1;min-height:40px;margin-bottom:1.25rem;">
+                    Connecting to digital verification nodes...
+                </p>
+                <div style="background:#160406;border-radius:999px;height:6px;width:100%;overflow:hidden;border:1px solid rgba(239,68,68,0.3);">
+                    <div id="scan-progress-bar" style="background:linear-gradient(to right, #ff1e42, #ef4444, #991b1b);height:100%;width:15%;transition:width 0.4s ease;box-shadow:0 0 10px rgba(239,68,68,0.6);"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESULTS DASHBOARD (12 Core Sections) -->
+        <div id="results-section" style="display:none;">
+            
+            <!-- Section 1 & 2: Final Verdict & Trust Score Banner -->
+            <div id="final-verdict-card" class="glass-card" style="padding:2rem;margin-bottom:2rem;border:2px solid rgba(239,68,68,0.4);box-shadow:0 0 35px rgba(239,68,68,0.2);transition:all 0.3s;">
+                <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;">
+                    
+                    <div style="flex:1;min-width:300px;">
+                        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.5rem;">
+                            <span style="font-size:0.75rem;font-weight:800;color:#fca5a5;text-transform:uppercase;letter-spacing:0.08em;">
+                                FINAL VERDICT
+                            </span>
+                            <span id="last-checked-label" style="font-size:0.72rem;color:#94a3b8;">
+                                Verified: Today
+                            </span>
+                        </div>
+                        <h2 id="final-verdict-title" style="font-size:2.3rem;font-weight:900;letter-spacing:-0.02em;margin-bottom:0.75rem;">
+                            🟢 LIKELY TRUE
+                        </h2>
+                        <p id="final-verdict-explanation" style="font-size:1rem;color:#f1f5f9;line-height:1.6;margin-bottom:1rem;">
+                            The factual claims correspond with official records and independent multi-source verification.
+                        </p>
+                        <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.75rem;color:#94a3b8;">
+                            <span>⚖️</span>
+                            <span id="score-disclaimer-text">AI-generated confidence estimate based on available evidence.</span>
+                        </div>
+                    </div>
+
+                    <!-- Trust Score Gauge -->
+                    <div style="display:flex;align-items:center;gap:1.5rem;">
+                        <div class="gauge-container">
+                            <svg class="gauge-svg" viewBox="0 0 120 120">
+                                <circle class="gauge-bg" cx="60" cy="60" r="54" />
+                                <circle id="gauge-circle" class="gauge-progress" cx="60" cy="60" r="54" />
+                            </svg>
+                            <div class="gauge-content">
+                                <div id="gauge-score-value" class="gauge-score">78</div>
+                                <div class="gauge-label">Trust Score</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sub-scores Grid -->
+                <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(130px, 1fr));gap:1rem;margin-top:1.75rem;padding-top:1.5rem;border-top:1px solid rgba(239,68,68,0.2);">
+                    <div style="text-align:center;">
+                        <div style="font-size:0.7rem;color:#fca5a5;text-transform:uppercase;font-weight:700;">Confidence</div>
+                        <div id="score-confidence" style="font-size:1.4rem;font-weight:800;color:#ff4d6d;margin-top:0.2rem;">89%</div>
+                    </div>
+                    <div style="text-align:center;">
+                        <div style="font-size:0.7rem;color:#fca5a5;text-transform:uppercase;font-weight:700;">Claim Accuracy</div>
+                        <div id="score-accuracy" style="font-size:1.4rem;font-weight:800;color:#34d399;margin-top:0.2rem;">82%</div>
+                    </div>
+                    <div style="text-align:center;">
+                        <div style="font-size:0.7rem;color:#fca5a5;text-transform:uppercase;font-weight:700;">Source Credibility</div>
+                        <div id="score-source-cred" style="font-size:1.4rem;font-weight:800;color:#a3e635;margin-top:0.2rem;">90/100</div>
+                    </div>
+                    <div style="text-align:center;">
+                        <div style="font-size:0.7rem;color:#fca5a5;text-transform:uppercase;font-weight:700;">Evidence Strength</div>
+                        <div id="score-evidence-strength" style="font-size:1.4rem;font-weight:800;color:#fbbf24;margin-top:0.2rem;">85%</div>
+                    </div>
+                    <div style="text-align:center;">
+                        <div style="font-size:0.7rem;color:#fca5a5;text-transform:uppercase;font-weight:700;">Manipulation Risk</div>
+                        <div id="score-manipulation-risk" style="font-size:1.4rem;font-weight:800;color:#ef4444;margin-top:0.2rem;">15%</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3, 4, 5: Platform, Credibility & Misinformation Overview Grid -->
+            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:1.25rem;margin-bottom:2rem;">
+                
+                <!-- Platform & Domain Card -->
+                <div class="glass-card" style="padding:1.25rem;">
+                    <div style="font-size:0.72rem;font-weight:700;color:#fca5a5;text-transform:uppercase;margin-bottom:0.75rem;">
+                        SOURCE PLATFORM & METADATA
+                    </div>
+                    <div style="margin-bottom:0.6rem;">
+                        <span style="font-size:0.75rem;color:#94a3b8;">Source Platform:</span>
+                        <div id="meta-platform" style="font-size:1.1rem;font-weight:800;color:#fff;">Instagram</div>
+                    </div>
+                    <div style="margin-bottom:0.6rem;">
+                        <span style="font-size:0.75rem;color:#94a3b8;">Source Domain:</span>
+                        <div id="meta-domain" style="font-size:0.92rem;font-weight:700;color:#ff4d6d;">instagram.com</div>
+                    </div>
+                    <div>
+                        <span style="font-size:0.75rem;color:#94a3b8;">Source Type:</span>
+                        <div id="meta-source-type" style="font-size:0.85rem;color:#cbd5e1;">Social Media</div>
+                    </div>
+                </div>
+
+                <!-- Credibility Rationale Card -->
+                <div class="glass-card" style="padding:1.25rem;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.75rem;">
+                        <div style="font-size:0.72rem;font-weight:700;color:#fca5a5;text-transform:uppercase;">
+                            SOURCE CREDIBILITY
+                        </div>
+                        <div id="meta-cred-score" style="font-size:1.1rem;font-weight:800;color:#34d399;">82/100</div>
+                    </div>
+                    <p id="meta-cred-explanation" style="font-size:0.82rem;color:#cbd5e1;line-height:1.5;">
+                        Evaluated based on domain track record, transparent citations, absence of satirical markers, and editorial accountability.
+                    </p>
+                </div>
+
+                <!-- Misinformation Type Card -->
+                <div class="glass-card" style="padding:1.25rem;">
+                    <div style="font-size:0.72rem;font-weight:700;color:#fca5a5;text-transform:uppercase;margin-bottom:0.75rem;">
+                        MISINFORMATION TYPE
+                    </div>
+                    <div style="margin-bottom:0.5rem;">
+                        <span id="misinfo-type-badge" class="badge badge-red" style="font-size:0.85rem;">
+                            Out-of-context information
+                        </span>
+                    </div>
+                    <p id="misinfo-type-explanation" style="font-size:0.82rem;color:#cbd5e1;line-height:1.5;">
+                        Real facts reframed with sensationalized assertions or omitted crucial caveats.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Section 6: Claims Detected Summary Counter -->
+            <div class="glass-card" style="padding:1rem 1.5rem;margin-bottom:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+                <div>
+                    <span style="font-size:0.85rem;font-weight:700;color:#f1f5f9;">Claims Detected:</span>
+                    <span id="claims-count-total" style="font-size:1.15rem;font-weight:900;color:#ff4d6d;margin-left:0.4rem;">3</span>
+                </div>
+                <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+                    <span class="badge badge-true">Verified: <strong id="claims-count-verified" style="margin-left:0.25rem;">1</strong></span>
+                    <span class="badge badge-misleading">Misleading: <strong id="claims-count-misleading" style="margin-left:0.25rem;">1</strong></span>
+                    <span class="badge badge-false">False: <strong id="claims-count-false" style="margin-left:0.25rem;">0</strong></span>
+                    <span class="badge badge-unverified">Unverified: <strong id="claims-count-unverified" style="margin-left:0.25rem;">1</strong></span>
+                </div>
+            </div>
+
+            <!-- Section 7 & 8: Claim-by-Claim Verification Cards -->
+            <div style="margin-bottom:2.5rem;">
+                <h3 style="font-size:1.25rem;font-weight:800;color:#fff;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;">
+                    <span>🔎</span> Claim-by-Claim Verification & Evidence Comparison
+                </h3>
+                <div id="claims-list-container">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </div>
+
+            <!-- Section 15: Visual Relationship Source Graph -->
+            <div class="glass-card" style="padding:1.5rem;margin-bottom:2.5rem;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+                    <div>
+                        <h3 style="font-size:1.15rem;font-weight:800;color:#fff;">Source & Verification Graph</h3>
+                        <div style="font-size:0.75rem;color:#94a3b8;">
+                            Interactive visual hierarchy: USER URL → PLATFORM → ARTICLE → CLAIMS → SOURCES → VERDICT
+                        </div>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.72rem;">
+                        <span style="display:inline-flex;align-items:center;gap:0.25rem;color:#10b981;font-weight:600;">● Supports</span>
+                        <span style="display:inline-flex;align-items:center;gap:0.25rem;color:#ef4444;font-weight:600;">● Contradicts</span>
+                    </div>
+                </div>
+                <div class="graph-viewport" id="source-graph-container">
+                    <!-- Rendered dynamically via SVG in graph.js -->
+                </div>
+            </div>
+
+            <!-- Section 11 & 13: Original Source & Media Forensics Grid -->
+            <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));gap:1.5rem;margin-bottom:2.5rem;">
+                
+                <!-- Section 11: Original Source Discovery -->
+                <div id="original-source-card" class="glass-card" style="padding:1.5rem;">
+                    <div style="font-size:0.72rem;font-weight:700;color:#fca5a5;text-transform:uppercase;margin-bottom:0.75rem;">
+                        ORIGINAL SOURCE DISCOVERY
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.5rem;">
+                        <h4 id="orig-source-name" style="font-size:1.1rem;font-weight:800;color:#fff;">Reuters</h4>
+                        <span id="orig-source-date" class="badge" style="background:#180507;color:#fca5a5;border:1px solid rgba(239,68,68,0.25);font-size:0.7rem;">Primary Record</span>
+                    </div>
+                    <p id="orig-source-rationale" style="font-size:0.85rem;color:#cbd5e1;line-height:1.5;margin-bottom:1rem;">
+                        Earliest corroboration or official coverage originated from this domain.
+                    </p>
+                    <a id="orig-source-link" href="#" target="_blank" rel="noopener noreferrer" style="font-size:0.82rem;color:#ff4d6d;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:0.3rem;">
+                        Visit Original Source Article ↗
+                    </a>
+                </div>
+
+                <!-- Section 13: Media Forensics (if image provided) -->
+                <div id="image-forensics-card" class="glass-card" style="display:none;padding:1.5rem;">
+                    <div style="font-size:0.72rem;font-weight:700;color:#fca5a5;text-transform:uppercase;margin-bottom:0.75rem;">
+                        IMAGE & MEDIA FORENSICS
+                    </div>
+                    <div style="margin-bottom:0.5rem;">
+                        <span style="font-size:0.75rem;color:#94a3b8;">Authenticity Status:</span>
+                        <div id="img-forensic-status" style="font-size:0.95rem;font-weight:700;color:#fff;">Image authenticity could not be reliably determined</div>
+                    </div>
+                    <div style="margin-bottom:0.5rem;">
+                        <span style="font-size:0.75rem;color:#94a3b8;">Manipulation Risk:</span>
+                        <div id="img-forensic-risk" style="font-size:0.85rem;font-weight:600;color:#fbbf24;">Inconclusive</div>
+                    </div>
+                    <p id="img-forensic-notes" style="font-size:0.8rem;color:#94a3b8;line-height:1.5;">
+                        Forensic analysis details...
+                    </p>
+                </div>
+            </div>
+
+            <!-- Section 10: Related & Similar News Links -->
+            <div style="margin-bottom:3rem;">
+                <h3 style="font-size:1.25rem;font-weight:800;color:#fff;margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem;">
+                    <span>📰</span> Related & Similar Authoritative News
+                </h3>
+                <div id="related-news-container" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:1rem;">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </div>
+
+            <!-- Export Actions Bar -->
+            <div class="glass-card no-print" style="padding:1.25rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;border-color:rgba(239,68,68,0.25);">
+                <div style="font-size:0.82rem;color:#cbd5e1;">
+                    Export verification report for sharing, citations, or editorial archiving:
+                </div>
+                <div style="display:flex;gap:0.75rem;">
+                    <button onclick="copyMarkdownReport()" style="background:#160406;color:#f1f5f9;border:1px solid rgba(239,68,68,0.25);padding:0.5rem 0.9rem;border-radius:0.5rem;font-size:0.82rem;font-weight:600;cursor:pointer;transition:all 0.2s;">
+                        📋 Copy Markdown
+                    </button>
+                    <button onclick="exportAsJson()" style="background:#160406;color:#f1f5f9;border:1px solid rgba(239,68,68,0.25);padding:0.5rem 0.9rem;border-radius:0.5rem;font-size:0.82rem;font-weight:600;cursor:pointer;transition:all 0.2s;">
+                        💾 Download JSON
+                    </button>
+                    <button onclick="printReport()" style="background:linear-gradient(135deg, #ef4444, #991b1b);color:#fff;border:none;padding:0.5rem 1rem;border-radius:0.5rem;font-size:0.82rem;font-weight:700;cursor:pointer;box-shadow:0 0 15px rgba(239,68,68,0.3);transition:all 0.2s;">
+                        🖨️ Print / Save PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Slide-out History Drawer -->
+    <div id="drawer-backdrop" class="drawer-backdrop no-print" onclick="toggleHistoryDrawer(false)"></div>
+    <div id="history-drawer" class="history-drawer no-print">
+        <div style="padding:1.25rem;border-bottom:1px solid rgba(239,68,68,0.25);display:flex;justify-content:space-between;align-items:center;">
+            <div style="display:flex;align-items:center;gap:0.5rem;">
+                <span style="font-size:1.25rem;">📂</span>
+                <span style="font-size:1.1rem;font-weight:900;color:#fff;">Verification History</span>
+            </div>
+            <button onclick="toggleHistoryDrawer(false)" style="background:transparent;border:none;color:#94a3b8;font-size:1.25rem;cursor:pointer;">✕</button>
+        </div>
+        <div id="history-list" style="flex:1;overflow-y:auto;padding:1rem;">
+            <!-- Rendered dynamically via history.js -->
+        </div>
+        <div style="padding:1rem;border-top:1px solid rgba(239,68,68,0.25);display:flex;justify-content:space-between;">
+            <button onclick="clearHistory()" style="background:transparent;border:1px solid rgba(239,68,68,0.4);color:#f87171;padding:0.4rem 0.8rem;border-radius:0.4rem;font-size:0.75rem;font-weight:700;cursor:pointer;">
+                Clear All History
+            </button>
+            <button onclick="toggleHistoryDrawer(false)" style="background:#180507;border:1px solid rgba(239,68,68,0.3);color:#fff;padding:0.4rem 0.8rem;border-radius:0.4rem;font-size:0.75rem;cursor:pointer;">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <!-- API Key & Settings Modal -->
+    <div id="settings-modal" class="modal-overlay no-print">
+        <div class="modal-container" style="padding:1.75rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+                <h3 style="font-size:1.2rem;font-weight:900;color:#fff;">API & Model Settings</h3>
+                <button onclick="toggleSettingsModal(false)" style="background:transparent;border:none;color:#94a3b8;font-size:1.2rem;cursor:pointer;">✕</button>
+            </div>
+            <p style="font-size:0.85rem;color:#cbd5e1;line-height:1.5;margin-bottom:1.25rem;">
+                TruVex AI works completely autonomously out-of-the-box using live DuckDuckGo web search and local NLP heuristics. You can optionally supply your own Google Gemini API key for enhanced contextual synthesis.
+            </p>
+            <div style="margin-bottom:1.5rem;">
+                <label style="display:block;font-size:0.8rem;font-weight:700;color:#fca5a5;margin-bottom:0.4rem;">
+                    Custom Google Gemini API Key (Optional)
+                </label>
+                <input id="input-custom-api-key" type="password" placeholder="AIzaSy..." style="width:100%;background:#090103;border:1px solid rgba(239,68,68,0.3);border-radius:0.5rem;padding:0.75rem;color:#fff;font-family:monospace;font-size:0.85rem;">
+                <div style="font-size:0.72rem;color:#94a3b8;margin-top:0.3rem;">Stored locally in your browser session. Never sent to third parties.</div>
+            </div>
+            <div style="display:flex;justify-content:flex-end;gap:0.75rem;">
+                <button onclick="toggleSettingsModal(false)" style="background:#180507;border:1px solid rgba(239,68,68,0.25);color:#fff;padding:0.5rem 1rem;border-radius:0.5rem;font-size:0.85rem;cursor:pointer;">Cancel</button>
+                <button onclick="saveCustomApiKey()" style="background:linear-gradient(135deg, #ef4444, #991b1b);border:none;color:#fff;padding:0.5rem 1.25rem;border-radius:0.5rem;font-size:0.85rem;font-weight:800;cursor:pointer;box-shadow:0 0 15px rgba(239,68,68,0.4);">Save Configuration</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Methodology & Anti-Hallucination Modal -->
+    <div id="methodology-modal" class="modal-overlay no-print">
+        <div class="modal-container" style="padding:1.75rem;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+                <h3 style="font-size:1.2rem;font-weight:900;color:#fff;">TruVex Verification Methodology</h3>
+                <button onclick="toggleMethodologyModal(false)" style="background:transparent;border:none;color:#94a3b8;font-size:1.2rem;cursor:pointer;">✕</button>
+            </div>
+            <div style="font-size:0.85rem;color:#cbd5e1;line-height:1.6;display:flex;flex-direction:column;gap:0.75rem;">
+                <div style="background:rgba(239,68,68,0.12);border-left:3px solid #ef4444;padding:0.75rem;border-radius:0.4rem;">
+                    <strong style="color:#ff4d6d;">Strict Anti-Hallucination Guarantee:</strong>
+                    TruVex AI never invents links, quotes, articles, or dates. Every single external evidence citation is retrieved directly from live real-time web searches.
+                </div>
+                <div>
+                    <strong style="color:#fff;">1. Multi-Source Diversity:</strong>
+                    Rather than relying on a single blog or reposted text, our search engine queries across government (.gov), academic (.edu), international wire agencies (Reuters, AP, AFP), and certified fact-checkers (Snopes, PolitiFact, FactCheck.org).
+                </div>
+                <div>
+                    <strong style="color:#fff;">2. Unverified Policy:</strong>
+                    When reliable evidence is unavailable, we explicitly issue an <strong style="color:#94a3b8;">UNVERIFIED</strong> verdict. We never force a FALSE or TRUE decision without corroboration.
+                </div>
+                <div>
+                    <strong style="color:#fff;">3. Old News Recirculation:</strong>
+                    Viral posts frequently recycle years-old footage as current breaking news. Our timeline checker cross-compares event timestamps to flag archival manipulation.
+                </div>
+            </div>
+            <div style="margin-top:1.5rem;text-align:right;">
+                <button onclick="toggleMethodologyModal(false)" style="background:linear-gradient(135deg, #ef4444, #991b1b);border:none;color:#fff;padding:0.5rem 1.25rem;border-radius:0.5rem;font-size:0.85rem;font-weight:800;cursor:pointer;box-shadow:0 0 15px rgba(239,68,68,0.4);">Understood</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        window.API_BASE = (window.location.protocol === "file:" || (window.location.port && window.location.port !== "8000")) ? "http://127.0.0.1:8000" : "";
+    </script>
+    <script src="/static/graph.js?v=1.0.1"></script>
+    <script src="/static/history.js?v=1.0.1"></script>
+    <script src="/static/app.js?v=1.0.1"></script>
+</body>
+</html>

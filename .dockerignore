@@ -1,0 +1,17 @@
+.venv
+venv
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.git
+.gitignore
+.env
+.pytest_cache
+tests
+data/*.db
+data/*.sqlite
+README.md
+LICENSE
+run.bat
+run.sh
