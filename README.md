@@ -4,7 +4,7 @@
 
 # ◈ TRUVEX — Multimodal Misinformation Detection Platform
 
-[![TruVex AI CI](https://github.com/ISBANDURAHUMAN-R/TRUVEX/actions/workflows/ci.yml/badge.svg)](https://github.com/ISBANDURAHUMAN-R/TRUVEX/actions)
+[![TruVex AI CI](https://github.com/ISBANDURAHUMAN-R/TRUTH_LENS/actions/workflows/ci.yml/badge.svg)](https://github.com/ISBANDURAHUMAN-R/TRUTH_LENS/actions)
 
 ## ◆ About the Project
 TRUVEX is an AI-powered misinformation detection and claims verification system. It decomposes textual and multimodal assertions into testable factual claims, cross-examines independent authoritative evidence, and computes objective credibility and veracity ratings in real time.
