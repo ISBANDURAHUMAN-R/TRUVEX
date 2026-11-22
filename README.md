@@ -15,14 +15,14 @@ TRUVEX is an AI-powered misinformation detection and claims verification system.
 ## ◆ System Architecture
 ```mermaid
 flowchart TD
-    Input["Input: Text / Article URL / Claim Assertion"] --> CE["Claim Extractor & Entity Parser"]
-    CE --> MSR["Multi-Source Evidence Retrieval Engine"]
-    MSR -->|"Authoritative Cross-Examination"| VS["Veracity Scorer & Contradiction Analyzer"]
-    MSR -->|"Domain Trust & Reputation Database"| CS["Credibility Scoring Engine"]
-    VS --> GS["Graph Service (NetworkX Claim Topology)"]
+    Input["Input: Text / Article URL /<br/>Claim Assertion"] --> CE["Claim Extractor &amp;<br/>Entity Parser"]
+    CE --> MSR["Multi-Source Evidence<br/>Retrieval Engine"]
+    MSR -->|"Authoritative<br/>Cross-Examination"| VS["Veracity Scorer &amp;<br/>Contradiction Analyzer"]
+    MSR -->|"Domain Trust &amp;<br/>Reputation Database"| CS["Credibility Scoring<br/>Engine"]
+    VS --> GS["Graph Service<br/>(NetworkX Claim Topology)"]
     CS --> GS
-    GS --> API["FastAPI REST Endpoints (OpenAPI / Swagger)"]
-    API --> UI["React & Tailwind Intelligence Dashboard"]
+    GS --> API["FastAPI REST Endpoints<br/>(OpenAPI / Swagger)"]
+    API --> UI["React & Tailwind<br/>Intelligence Dashboard"]
 ```
 
 ## ❖ Key Features
