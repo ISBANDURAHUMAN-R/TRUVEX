@@ -15,14 +15,14 @@ TRUVEX is an AI-powered misinformation detection and claims verification system.
 ## ◆ System Architecture
 ```mermaid
 flowchart TD
-    Input["Input: Text / Article URL /<br/>Claim Assertion"] --> CE["Claim Extractor &amp;<br/>Entity Parser"]
-    CE --> MSR["Multi-Source Evidence<br/>Retrieval Engine"]
-    MSR -->|"Authoritative<br/>Cross-Examination"| VS["Veracity Scorer &amp;<br/>Contradiction Analyzer"]
-    MSR -->|"Domain Trust &amp;<br/>Reputation Database"| CS["Credibility Scoring<br/>Engine"]
-    VS --> GS["Graph Service<br/>(NetworkX Claim Topology)"]
+    Input["&nbsp; Input: Text / Article / &nbsp;<br/>&nbsp; Claim Assertion &nbsp;"] --> CE["&nbsp; Claim Extractor &amp; &nbsp;<br/>&nbsp; Entity Parser &nbsp;"]
+    CE --> MSR["&nbsp; Multi-Source Evidence &nbsp;<br/>&nbsp; Retrieval Engine &nbsp;"]
+    MSR -->|"&nbsp; Authoritative Cross-Exam &nbsp;"| VS["&nbsp; Veracity Scorer &amp; &nbsp;<br/>&nbsp; Contradiction Analyzer &nbsp;"]
+    MSR -->|"&nbsp; Domain Trust &amp; &nbsp;<br/>&nbsp; Reputation Database &nbsp;"| CS["&nbsp; Credibility Scoring &nbsp;<br/>&nbsp; Engine &nbsp;"]
+    VS --> GS["&nbsp; Graph Service &nbsp;<br/>&nbsp; (NetworkX Topology) &nbsp;"]
     CS --> GS
-    GS --> API["FastAPI REST Endpoints<br/>(OpenAPI / Swagger)"]
-    API --> UI["React & Tailwind<br/>Intelligence Dashboard"]
+    GS --> API["&nbsp; FastAPI Endpoints &nbsp;<br/>&nbsp; (OpenAPI / Swagger) &nbsp;"]
+    API --> UI["&nbsp; React &amp; Tailwind &nbsp;<br/>&nbsp; Intelligence Dashboard &nbsp;"]
 ```
 
 ## ❖ Key Features
